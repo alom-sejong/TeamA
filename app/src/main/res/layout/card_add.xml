@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/cardImage"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:src="#FFFF00"
+        android:layout_height="250dp" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:id="@+id/addCardBtn"
+        android:background="@drawable/card_add_plus_image"
+        android:layout_height="250dp" />
+
+</LinearLayout>
