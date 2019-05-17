@@ -14,7 +14,8 @@
     <Button
         android:layout_width="match_parent"
         android:layout_weight="1"
-        android:text="Test"
+        android:text="금액 입력"
+        android:id="@+id/payActivityBtn"
         android:layout_height="0dp" />
 
     <Button
