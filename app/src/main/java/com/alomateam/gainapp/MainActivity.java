@@ -9,6 +9,7 @@ package com.alomateam.gainapp;
         import android.widget.Button;
 
         import com.alomateam.gainapp.Card.CardManagerActivity;
+        import com.alomateam.gainapp.Pay.CategoryActivity;
         import com.alomateam.gainapp.Pay.PayActivity;
 
 public class MainActivity extends AppCompatActivity {
@@ -30,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
         payActivityBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this, PayActivity.class));
+                startActivity(new Intent(MainActivity.this, CategoryActivity.class));
             }
         });
     }
