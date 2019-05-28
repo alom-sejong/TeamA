@@ -1,23 +1,25 @@
 package com.alomateam.gainapp.Pay;
 
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
-
 import com.alomateam.gainapp.R;
-
 import java.util.ArrayList;
-
 import cn.trinea.android.view.autoscrollviewpager.AutoScrollViewPager;
 
 public class CategoryActivity extends AppCompatActivity {
 
     AutoScrollViewPager autoViewPager;
     ImageView category[] = new ImageView[8];
+    ArrayList<CharSequence[]> charSequences = new ArrayList<>();
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
@@ -25,18 +27,27 @@ public class CategoryActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_category);
 
-        ArrayList<String> data = new ArrayList<>(); //이미지 url를 저장하는 arraylist
-        data.add("https://upload.wikimedia.org/wikipedia/en/thumb/2/24/SpongeBob_SquarePants_logo.svg/1200px-SpongeBob_SquarePants_logo.svg.png");
-        data.add("http://nick.mtvnimages.com/nick/promos-thumbs/videos/spongebob-squarepants/rainbow-meme-video/spongebob-rainbow-meme-video-16x9.jpg?quality=0.60");
-        data.add("http://nick.mtvnimages.com/nick/video/images/nick/sb-053-16x9.jpg?maxdimension=&quality=0.60");
-        data.add("https://www.gannett-cdn.com/-mm-/60f7e37cc9fdd931c890c156949aafce3b65fd8c/c=243-0-1437-898&r=x408&c=540x405/local/-/media/2017/03/14/USATODAY/USATODAY/636250854246773757-XXX-IMG-WTW-SPONGEBOB01-0105-1-1-NC9J38E8.JPG");
+        final ArrayList<String> data = new ArrayList<>();
+        data.add("https://github.com/alom-sejong/TeamA/raw/master/app/src/main/res/drawable/slide_1.png");
+        data.add("https://github.com/alom-sejong/TeamA/raw/master/app/src/main/res/drawable/slide_2.png");
+        data.add("https://github.com/alom-sejong/TeamA/raw/master/app/src/main/res/drawable/slide_3.png");
+        data.add("https://github.com/alom-sejong/TeamA/raw/master/app/src/main/res/drawable/slide_4.png");
 
         autoViewPager = (AutoScrollViewPager)findViewById(R.id.autoViewPager);
         AutoScrollAdapter scrollAdapter = new AutoScrollAdapter(this, data);
-        autoViewPager.setAdapter(scrollAdapter); //Auto Viewpager에 Adapter 장착
-        autoViewPager.setInterval(5000); // 페이지 넘어갈 시간 간격 설정
-        autoViewPager.startAutoScroll(); //Auto Scroll 시작
+        autoViewPager.setAdapter(scrollAdapter);
+        autoViewPager.setInterval(5000);
+        autoViewPager.startAutoScroll();
 
+        final AlertDialog.Builder dialog = new AlertDialog.Builder(this, android.R.style.Theme_DeviceDefault_Light_Dialog_Alert);
+        charSequences.add(new CharSequence[] {"스타벅스", "커피빈", "그외"});
+        charSequences.add(new CharSequence[] {"아웃백", "VIPS", "TGIF", "세븐스프링스", "그외"});
+        charSequences.add(new CharSequence[]{"CGV", "롯데시네마", "메가박스"});
+        charSequences.add(new CharSequence[]{"지하철/버스", "택시"});
+        charSequences.add(new CharSequence[]{"이마트","롯데마트","홈플러스","그외"});
+        charSequences.add(new CharSequence[]{"GS25", "CU", "세븐일레븐", "그외"});
+        charSequences.add(new CharSequence[]{"롯데월드", "에버랜드", "서울랜드"});
+        charSequences.add(new CharSequence[]{"쿠팡", "위메프", "티"});
 
         for(int i = 0; i < 8; i++){
             category[i] = findViewById(R.id.ca_1 + i);
@@ -44,7 +55,15 @@ public class CategoryActivity extends AppCompatActivity {
             category[i].setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Toast.makeText(getApplicationContext(),  k+ " clicked", Toast.LENGTH_SHORT).show();
+                    dialog.setTitle("사용처를 선택하세요").setItems(charSequences.get(k), new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            Toast.makeText(getApplicationContext(), charSequences.get(k)[i], Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(CategoryActivity.this, PayActivity.class);
+                            intent.putExtra("value", charSequences.get(k)[i].toString());
+                            startActivity(intent);
+                        }
+                    }).setCancelable(true).show();
                 }
             });
         }
