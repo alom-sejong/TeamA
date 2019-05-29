@@ -11,6 +11,7 @@ import android.widget.Button;
 import com.alomateam.gainapp.R;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class CardManagerActivity extends AppCompatActivity {
 
@@ -22,6 +23,7 @@ public class CardManagerActivity extends AppCompatActivity {
         setContentView(R.layout.card_manager);
 
       //  ArrayList<Integer> cardImageArray = new ArrayList<>();
+      //  ArrayList<HashMap<String, Integer>> cardImageArray = new ArrayList<>();
 
         ViewPager viewPager = findViewById(R.id.viewPager);
         fragmentAdapter = new CardFragmentAdapter(getSupportFragmentManager());
