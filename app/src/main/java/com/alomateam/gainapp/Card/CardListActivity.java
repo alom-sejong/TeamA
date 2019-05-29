@@ -4,6 +4,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.widget.SearchView;
 
 import com.alomateam.gainapp.R;
 
@@ -13,6 +16,7 @@ public class CardListActivity extends AppCompatActivity {
 
     RecyclerView mRecyclerView;
     RecyclerView.LayoutManager mLayoutManager;
+    MyCardAdapter mycardadapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,8 +58,29 @@ public class CardListActivity extends AppCompatActivity {
         cardInfoArrayList.add(new CardInfo(R.drawable.a27,"해피포인트_KB국민_체크카드"));
         cardInfoArrayList.add(new CardInfo(R.drawable.a28,"훈_체크카드"));
 
-        MyCardAdapter mycardadapter = new  MyCardAdapter(cardInfoArrayList);
+        mycardadapter = new  MyCardAdapter(cardInfoArrayList);
         mRecyclerView.setAdapter(mycardadapter);
 
+
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu, menu);
+        MenuItem searchItem = menu.findItem(R.id.search);
+        android.widget.SearchView searchView = (SearchView) searchItem.getActionView();
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String s) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String s) {
+                mycardadapter.getFilter().filter(s);
+                return false;
+            }
+        });
+        return true;
     }
 }
