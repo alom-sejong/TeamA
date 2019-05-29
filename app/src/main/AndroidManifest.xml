@@ -12,6 +12,7 @@
         <activity android:name=".Pay.CategoryActivity"></activity>
         <activity android:name=".Pay.PayActivity" />
         <activity android:name=".SettingActivity" />
+        <activity android:name=".Card.CardListActivity"/>
         <activity android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -8,6 +8,7 @@ package com.alomateam.gainapp;
         import android.view.View;
         import android.widget.Button;
 
+        import com.alomateam.gainapp.Card.CardListActivity;
         import com.alomateam.gainapp.Card.CardManagerActivity;
         import com.alomateam.gainapp.Pay.CategoryActivity;
         import com.alomateam.gainapp.Pay.PayActivity;
@@ -21,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
 
         Button cardActivityBtn = (Button) findViewById(R.id.cardActivityBtn);
         Button payActivityBtn = (Button) findViewById(R.id.payActivityBtn);
+        Button cardListBtn = (Button) findViewById(R.id.cardListBtn);
 
         cardActivityBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -32,6 +34,12 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(MainActivity.this, CategoryActivity.class));
+            }
+        });
+        cardListBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, CardListActivity.class));
             }
         });
     }

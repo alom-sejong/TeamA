@@ -21,6 +21,7 @@
     <Button
         android:layout_width="match_parent"
         android:layout_weight="1"
+        android:id="@+id/cardListBtn"
         android:text="Test2"
         android:layout_height="0dp" />
 
