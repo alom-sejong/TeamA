@@ -55,4 +55,13 @@
         <item>위메프</item>
         <item>티몬</item>
     </string-array>
+    <string-array name="cardList_KB">
+        <item>훈체크카드</item>
+        <item>노리체크카드</item>
+        <item>청춘대로 싱글 체크카드</item>
+        <item>카카오페이 KB국민 체크카드</item>
+        <item>포인트리 체크카드</item>
+        <item>Liiv Mate 체크카드</item>
+        <item>가온 올포인트 체크카드</item>
+    </string-array>
 </resources>

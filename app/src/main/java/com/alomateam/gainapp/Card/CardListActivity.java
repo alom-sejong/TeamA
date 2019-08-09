@@ -25,7 +25,7 @@ public class CardListActivity extends AppCompatActivity {
         mRecyclerView.setLayoutManager(mLayoutManager);
 
         ArrayList<CardInfo> cardInfoArrayList = new ArrayList<>();
-        cardInfoArrayList.add(new CardInfo(R.drawable.a1,"AK_KB국민_체크카드"));
+/*        cardInfoArrayList.add(new CardInfo(R.drawable.a1,"AK_KB국민_체크카드"));
         cardInfoArrayList.add(new CardInfo(R.drawable.a2,"H_Point_체크카드"));
         cardInfoArrayList.add(new CardInfo(R.drawable.a3,"LG_U플러스_체크카드"));
         cardInfoArrayList.add(new CardInfo(R.drawable.a4,"Liiv_Mate_체크카드"));
@@ -56,6 +56,6 @@ public class CardListActivity extends AppCompatActivity {
 
         MyCardAdapter mycardadapter = new  MyCardAdapter(cardInfoArrayList);
         mRecyclerView.setAdapter(mycardadapter);
-
+*/
     }
 }

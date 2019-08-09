@@ -6,12 +6,12 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.widget.Button;
 
 import com.alomateam.gainapp.R;
 
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.Arrays;
+import java.util.List;
 
 public class CardManagerActivity extends AppCompatActivity {
 
@@ -22,7 +22,9 @@ public class CardManagerActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.card_manager);
 
-      //  ArrayList<Integer> cardImageArray = new ArrayList<>();
+        String[] strings = getResources().getStringArray(R.array.cardList_KB);
+        // ArrayList<String> cardArray =
+        // 국민
       //  ArrayList<HashMap<String, Integer>> cardImageArray = new ArrayList<>();
 
         ViewPager viewPager = findViewById(R.id.viewPager);

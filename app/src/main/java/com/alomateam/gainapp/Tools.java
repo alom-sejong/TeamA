@@ -9,36 +9,40 @@ import org.json.JSONException;
 
 import java.util.ArrayList;
 
+import static android.content.Context.MODE_PRIVATE;
+
 public class Tools {
     private Context context;
     private SharedPreferences mPref;
     private SharedPreferences.Editor mEdit;
 
-    public void putStringItem(String key, String value, String fileName) {
-        mEdit.putString(key, value);
-        mEdit.apply();
+    public void putStringItem(String key, String value, String preferenceFileName) {
+        SharedPreferences preferences = context.getSharedPreferences(preferenceFileName, MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putString(key, value);
+        editor.apply();
     }
 
-    public String getStringItem(String key, String value, String fileName) {
-        return context.getSharedPreferences(fileName, 0).getString(key, value);
+    public String getStringItem(String key, String value, String preferenceFileName) {
+        return context.getSharedPreferences(preferenceFileName, MODE_PRIVATE).getString(key, value);
     }
 
-    public void setStringArrayPref(Context context, String key, ArrayList<String> values) {
-   /*     SharedPreferences prefs = context.getSharedPreferences(key, values);
+    private void setStringArrayPref(Context context, String key, ArrayList<String> values) {
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
         SharedPreferences.Editor editor = prefs.edit();
-
         JSONArray a = new JSONArray();
-        for (int i = 0; i < values.size(); i++)
+        for (int i = 0; i < values.size(); i++) {
             a.put(values.get(i));
-
-        if (!values.isEmpty())
+        }
+        if (!values.isEmpty()) {
             editor.putString(key, a.toString());
-        else
+        } else {
             editor.putString(key, null);
-        editor.apply(); */
+        }
+        editor.apply();
     }
 
-    public ArrayList<String> getStringArrayPref(String key) {
+    private ArrayList<String> getStringArrayPref(Context context, String key) {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
         String json = prefs.getString(key, null);
         ArrayList<String> urls = new ArrayList<String>();
